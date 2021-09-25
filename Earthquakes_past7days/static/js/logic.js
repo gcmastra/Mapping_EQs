@@ -38,8 +38,7 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/t
 
 
 // Accessing the airport GeoJSON URL
-let airportData = "https://raw.githubusercontent.com/gcmastra/Mapping_EQs/main/majorAirports.json";
-
+// let airportData = "https://raw.githubusercontent.com/gcmastra/Mapping_EQs/main/majorAirports.json";
 // option 2 works if you are working from local copy but you must launch localhost:8000 first
 // let airportData = "../majorAirports.json";
 
@@ -51,12 +50,25 @@ let airportData = "https://raw.githubusercontent.com/gcmastra/Mapping_EQs/main/m
 // });
 
 // Grabbing our GeoJSON data.
-d3.json(airportData).then(function(data) {
-  console.log(data);
-// Creating a GeoJSON layer with the retrieved data.
-L.geoJson(data).addTo(map);
-});
+// d3.json(airportData).then(function(data) {
+//   console.log(data);
+// // Creating a GeoJSON layer with the retrieved data.
+// L.geoJson(data).addTo(map);
+// });
 
+// Creating a GeoJSON layer with the retrieved data.
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
+  // Creating a GeoJSON layer with the retrieved data.
+L.geoJson(data, {
+
+  // We turn each feature into a circleMarker on the map.
+  
+  pointToLayer: function(feature, latlng) {
+              console.log(data);
+              return L.circleMarker(latlng);
+          },
+      }).addTo(map);
+  });
 
 // Add GeoJSON data.
 let sanFranAirport =
