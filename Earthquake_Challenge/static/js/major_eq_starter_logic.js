@@ -166,7 +166,32 @@ legend.onAdd = function() {
 
 
   // Use d3.json to make a call to get our Tectonic Plate geoJSON data.
-  d3.json().then(() {
+  // d3.json().then(() {
+
+  // GeoJSON/PB2002_boundaries.json  
+  fileURL = "https://github.com/fraxen/tectonicplates/blob/339b0c56563c118307b1f4542703047f5f698fae/GeoJSON/PB2002_boundaries.json";
+  // d3.json("http://localhost:8000/Mapping_EQs/tectonic.json").then(function(data2) {
+  // get data from local file to avoid CORS errors
+  d3.json("../tectonic.json").then(function(data2) {
+    console.log(data2);
+      
+      // Creating a GeoJSON layer with the retrieved data.
+      // if we want to change format color do it here before adding to map 
+      // default color looks blue, 
+    L.geoJson(data2,{
+        color: "yellow",
+        weight: 5
+    }).addTo(tectonicPlates);
+  
+  }
+      
+  );
+  
+  console.log("working tectonic");
+  // add a time stamp to the console log to see what happens first
+  
+  tectonicPlates.addTo(map);
+  
     
-  });
+  
 });
