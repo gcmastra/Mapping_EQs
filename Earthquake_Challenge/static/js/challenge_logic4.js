@@ -228,7 +228,8 @@ legend.onAdd = function() {
   // d3.json().then(() {
 
   // GeoJSON/PB2002_boundaries.json  
-  fileURL = "https://github.com/fraxen/tectonicplates/blob/339b0c56563c118307b1f4542703047f5f698fae/GeoJSON/PB2002_boundaries.json";
+  fileURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
+  // fileURL = "https://github.com/fraxen/tectonicplates/blob/339b0c56563c118307b1f4542703047f5f698fae/GeoJSON/PB2002_boundaries.json";
   // next line is for local testing only - remember to restore fileURL from line above
   // fileURL = "http://localhost:8000/Mapping_EQs/tectonic.json";
   // get data from local file to avoid CORS errors
